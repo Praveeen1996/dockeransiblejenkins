@@ -3,6 +3,9 @@ pipeline {
     tools {
   maven 'maven-3.9.3'
   }
+    environment {
+      DOCKER_TAG = getVersion()
+    }
 
     stages {
 
@@ -21,5 +24,14 @@ pipeline {
                 sh "mvn clean package"
             }
         }
+        stage('DOCKER BUILD IMAGE'){
+            steps{
+                sh "docker build . -t praveenhema/hemasreeapp:${DOCKER_TAG} "
+            }
+        }
     }
+}
+def getVersion(){
+    def commitHash = sh label: '', returnStdout: true, script: 'git rev-parse --short HEAD'
+    return commitHash
 }
