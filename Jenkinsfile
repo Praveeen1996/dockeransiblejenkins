@@ -29,6 +29,15 @@ pipeline {
                 sh "docker build . -t praveenhema/hemasreeapp:${DOCKER_TAG} "
             }
         }
+        stage('DOCKERHUB PUSH'){
+            steps{
+                withCredentials([string(credentialsId: 'docker-hub', variable: 'dockerHubPwd')]) {
+                    sh "docker login -u praveenhema -p ${dockerHubPwd}"
+                }
+                
+                sh "docker push praveenhema/hemasreeapp:${DOCKER_TAG} "
+            }
+        }
     }
 }
 def getVersion(){
