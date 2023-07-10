@@ -7,11 +7,6 @@ pipeline {
                 cleanWs()
             }
         }
-    }
-         stage('CODE CHECKOUT') {
-            steps {
-                https://github.com/Praveeen1996/dockeransiblejenkins.git
-            }
-        }
+         
     }
 }
