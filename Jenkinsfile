@@ -7,6 +7,10 @@ pipeline {
                 cleanWs()
             }
         }
-    
+         stage('CODE CHECKOUT') {
+            steps {
+                
+            }
+        }
     }
 }
