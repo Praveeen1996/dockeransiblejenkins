@@ -24,11 +24,6 @@ pipeline {
                 sh "mvn clean package"
             }
         }
-        stage('CODE QUALITY REPORT'){
-            steps{
-                sh "mvn clean sonar:sonar"
-            }
-        }
         stage('DOCKER BUILD IMAGE'){
             steps{
                 sh "docker build . -t praveenhema/hemasreeapp:${DOCKER_TAG} "
