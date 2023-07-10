@@ -38,6 +38,15 @@ pipeline {
                 sh "docker push praveenhema/hemasreeapp:${DOCKER_TAG} "
             }
         }
+        stage('DEPLOY APPLICATION IN K82 CLUSTER'){
+            steps{
+               KubernetesDeploy(
+                   configs:'dockeransiblejenkins.ymal',
+                   kubeconfigId:'KUBERNETES_CLUSTER_CONFIG',
+                   enableConfigSubstitution: true
+               )
+            }
+        }
     }
 }
 def getVersion(){
