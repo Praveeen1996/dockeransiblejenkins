@@ -9,7 +9,7 @@ pipeline {
         }
          stage('CODE CHECKOUT') {
             steps {
-                
+                git 'https://github.com/Praveeen1996/dockeransiblejenkins.git'
             }
         }
     }
