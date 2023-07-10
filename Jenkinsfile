@@ -16,7 +16,7 @@ pipeline {
                 git 'https://github.com/Praveeen1996/dockeransiblejenkins.git'
             }
         }
-        stage('Maven Build'){
+        stage('MAVEN BUILD'){
             steps{
                 sh "mvn clean package"
             }
